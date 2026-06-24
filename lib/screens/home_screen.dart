@@ -375,6 +375,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildLogCard(_LogData log) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
       padding: const EdgeInsets.all(AppSpacing.cardPadding),
       decoration: BoxDecoration(
         color: AppColors.backgroundElevated,
