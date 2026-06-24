@@ -11,8 +11,8 @@ import '../theme/app_radius.dart';
 import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
-import 'discovery_intro_screen.dart';
 import 'camera_screen.dart';
+import 'discovery_card_screen.dart';
 
 /// 메인 홈 화면.
 class HomeScreen extends StatefulWidget {
@@ -429,7 +429,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     if (index == 1) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => const DiscoveryIntroScreen()),
+        MaterialPageRoute(builder: (_) => const DiscoveryCardScreen()),
       );
       return;
     }

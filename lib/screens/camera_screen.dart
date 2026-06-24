@@ -88,48 +88,6 @@ class _CameraScreenState extends State<CameraScreen> {
     );
   }
 
-  Widget _buildDiscoveryBanner() {
-    return Positioned(
-      top: 60,
-      left: AppSpacing.screenPadding,
-      right: AppSpacing.screenPadding,
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.lg,
-          vertical: AppSpacing.md,
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.backgroundElevated.withValues(alpha: 0.94),
-          borderRadius: BorderRadius.circular(AppRadius.lg),
-        ),
-        child: Column(
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(Icons.eco, size: 18, color: AppColors.primary),
-                const SizedBox(width: 6),
-                Text(
-                  '자연을 발견해보세요!',
-                  style: AppTextStyles.bodyMedium.copyWith(
-                    color: AppColors.primary,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 4),
-            Text(
-              '식물, 동물, 곤충, 건축물 모두 좋아요.',
-              style: AppTextStyles.caption.copyWith(
-                color: AppColors.textSecondary,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _buildFocusFrame() {
     return Center(
       child: SizedBox(
@@ -284,10 +242,6 @@ class _CameraScreenState extends State<CameraScreen> {
                 ),
               ),
               const SizedBox(height: AppSpacing.lg),
-              // 탭 바
-              // _buildTabBar(),
-              // const SizedBox(height: AppSpacing.lg),
-              // 촬영 컨트롤
               _buildCaptureControls(),
               const SizedBox(height: AppSpacing.md),
               // 팁 배너
@@ -332,67 +286,6 @@ class _CameraScreenState extends State<CameraScreen> {
           shape: BoxShape.circle,
         ),
         child: Icon(icon, color: Colors.white, size: 20),
-      ),
-    );
-  }
-
-  Widget _buildTabBar() {
-    final tabs = [
-      _TabItem(icon: Icons.local_florist, label: '탐험'),
-      _TabItem(icon: Icons.camera_alt, label: '사진', isSelected: true),
-      _TabItem(icon: Icons.flag, label: '퀘스트'),
-      _TabItem(icon: Icons.edit, label: '메모'),
-    ];
-
-    return Container(
-      padding: const EdgeInsets.all(4),
-      margin: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.screenPadding,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(AppRadius.full),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: tabs.map((tab) {
-          return GestureDetector(
-            onTap: () {},
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSpacing.md,
-                vertical: AppSpacing.sm,
-              ),
-              decoration: tab.isSelected
-                  ? BoxDecoration(
-                      color: AppColors.backgroundElevated,
-                      borderRadius: BorderRadius.circular(AppRadius.full),
-                      boxShadow: AppShadows.card,
-                    )
-                  : null,
-              child: Row(
-                children: [
-                  Icon(
-                    tab.icon,
-                    size: 18,
-                    color: tab.isSelected
-                        ? AppColors.primary
-                        : AppColors.textSecondary,
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    tab.label,
-                    style: AppTextStyles.captionMedium.copyWith(
-                      color: tab.isSelected
-                          ? AppColors.textPrimary
-                          : AppColors.textSecondary,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        }).toList(),
       ),
     );
   }
@@ -539,12 +432,4 @@ class _CameraPreviewPlaceholder extends StatelessWidget {
       ),
     );
   }
-}
-
-class _TabItem {
-  final IconData icon;
-  final String label;
-  final bool isSelected;
-
-  _TabItem({required this.icon, required this.label, this.isSelected = false});
 }
