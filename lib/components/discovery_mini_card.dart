@@ -13,6 +13,18 @@ class DiscoveryMiniCard extends StatelessWidget {
   final DiscoveryCard card;
   final VoidCallback? onTap;
 
+  /// 카드 전체 높이. 패딩·이미지·텍스트·칩·별점·날짜의 합.
+  static const double cardHeight = AppSpacing.md * 2 + // top/bottom padding
+      84 + // image area
+      AppSpacing.md + // gap after image
+      20 + // name (bodyMedium line height ~20)
+      AppSpacing.xs + // gap
+      18 + // category chip
+      AppSpacing.xs + // gap
+      18 + // star row
+      AppSpacing.xs + // gap
+      16; // date (caption line height ~16)
+
   const DiscoveryMiniCard({
     super.key,
     required this.card,
