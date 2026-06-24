@@ -34,7 +34,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +72,13 @@ flutter:
           weight: 500
         - asset: assets/fonts/Pretendard-Bold.otf
           weight: 700
+    - family: Fredoka
+      fonts:
+        - asset: assets/fonts/Fredoka.ttf
+          weight: 700
+    - family: Jua
+      fonts:
+        - asset: assets/fonts/Jua-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

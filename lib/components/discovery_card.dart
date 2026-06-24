@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../models/discovery_card_item.dart';
 import '../theme/app_colors.dart';
@@ -65,8 +64,8 @@ class DiscoveryCard extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             Text(
               item.name,
-              style: GoogleFonts.jua(
-                textStyle: AppTextStyles.bodyMedium,
+              style: AppTextStyles.bodyMedium.copyWith(
+                fontFamily: 'Jua',
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,

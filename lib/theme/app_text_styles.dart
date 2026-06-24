@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 
 /// Little Quest의 타이포그래피 스케일.
 ///
-/// - 영문 로고: Fredoka Bold (Google Fonts)
-/// - 한글 타이틀/헤딩 문구: Jua (Google Fonts)
-/// - 앱 본문/UI: Pretendard (수동 번들, Google Fonts에 없음)
+/// 모든 폰트는 pubspec.yaml에 번들링하여 CDN 의존 없이 동작한다.
+/// - 영문 로고: Fredoka Bold
+/// - 한글 타이틀/헤딩 문구: Jua
+/// - 앱 본문/UI: Pretendard
 abstract final class AppTextStyles {
   // 본문/UI 기본 폰트. Pretendard는 pubspec에 번들링한 에셋 폰트.
   static TextStyle get _base => const TextStyle(fontFamily: 'Pretendard');
   // 한글 타이틀/헤딩용 장식 폰트.
-  static TextStyle get _display => GoogleFonts.jua();
+  static TextStyle get _display => const TextStyle(fontFamily: 'Jua');
   // 영문 로고용 폰트.
-  static TextStyle get _logo => GoogleFonts.fredoka(fontWeight: FontWeight.w700);
+  static TextStyle get _logo =>
+      const TextStyle(fontFamily: 'Fredoka', fontWeight: FontWeight.w700);
 
   /// 영문 로고 전용 스타일. AppBar의 "Little Quest" 타이틀 등에 사용.
   static TextStyle get logo => _logo.copyWith(

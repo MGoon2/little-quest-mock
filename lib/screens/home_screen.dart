@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../components/app_scaffold.dart';
 import '../components/discovery_card.dart';
@@ -296,10 +295,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: AppSpacing.sm),
                 Text(
                   banner.subtitle,
-                  style: GoogleFonts.jua(
-                    textStyle: AppTextStyles.body.copyWith(
-                      color: AppColors.textSecondary,
-                    ),
+                  style: AppTextStyles.body.copyWith(
+                    color: AppColors.textSecondary,
+                    fontFamily: 'Jua',
                   ),
                 ),
               ],
@@ -403,8 +401,8 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   log.title,
-                  style: GoogleFonts.jua(
-                    textStyle: AppTextStyles.bodyMedium,
+                  style: AppTextStyles.bodyMedium.copyWith(
+                    fontFamily: 'Jua',
                   ),
                 ),
                 const SizedBox(height: 4),

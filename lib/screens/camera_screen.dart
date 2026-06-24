@@ -19,15 +19,22 @@ class CameraScreen extends StatefulWidget {
 }
 
 class _CameraScreenState extends State<CameraScreen> {
-  String _selectedCategory = '식물';
+  String _selectedCategory = '자동';
+  bool _categoryPanelVisible = false;
 
-  final List<String> _categories = ['식물', '동물', '곤충', '건축물'];
+  final List<String> _categories = ['자동', '식물', '동물', '곤충', '건축물'];
   final List<IconData> _categoryIcons = [
+    Icons.auto_awesome,
     Icons.eco,
     Icons.pets,
     Icons.bug_report,
     Icons.account_balance,
   ];
+
+  IconData get _selectedCategoryIcon {
+    final index = _categories.indexOf(_selectedCategory);
+    return index >= 0 ? _categoryIcons[index] : Icons.auto_awesome;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +48,11 @@ class _CameraScreenState extends State<CameraScreen> {
           // 상단 컨트롤
           _buildTopControls(),
           // 중앙 발견 배너
-          _buildDiscoveryBanner(),
+          // _buildDiscoveryBanner(),
           // 포커스 프레임
           _buildFocusFrame(),
           // 오른쪽 카테고리 선택
-          _buildCategoryPanel(),
+          if (_categoryPanelVisible) _buildCategoryPanel(),
           // 하단 컨트롤
           _buildBottomControls(),
         ],
@@ -54,19 +61,26 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   Widget _buildTopControls() {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.screenPadding,
-        ),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: GestureDetector(
-            onTap: () => Navigator.of(context).pop(),
-            child: const Icon(
-              Icons.close,
-              color: Colors.white,
-              size: 28,
+    return Positioned(
+      top: 0,
+      left: 0,
+      right: 0,
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.screenPadding,
+            vertical: AppSpacing.sm,
+          ),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: GestureDetector(
+              onTap: () => Navigator.of(context).pop(),
+              child: const Icon(
+                Icons.close,
+                color: Colors.white,
+                size: 28,
+              ),
             ),
           ),
         ),
@@ -239,7 +253,7 @@ class _CameraScreenState extends State<CameraScreen> {
       bottom: 0,
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.background.withValues(alpha: 0.96),
+          color: AppColors.background.withValues(alpha: 0.6),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(AppRadius.xl),
             topRight: Radius.circular(AppRadius.xl),
@@ -257,17 +271,22 @@ class _CameraScreenState extends State<CameraScreen> {
                   horizontal: AppSpacing.screenPadding,
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    const Expanded(child: SizedBox()),
                     _buildZoomChip('1.0x'),
-                    _buildIconChip(Icons.eco),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: _buildIconChip(_selectedCategoryIcon),
+                      ),
+                    ),
                   ],
                 ),
               ),
               const SizedBox(height: AppSpacing.lg),
               // 탭 바
-              _buildTabBar(),
-              const SizedBox(height: AppSpacing.lg),
+              // _buildTabBar(),
+              // const SizedBox(height: AppSpacing.lg),
               // 촬영 컨트롤
               _buildCaptureControls(),
               const SizedBox(height: AppSpacing.md),
@@ -301,14 +320,19 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   Widget _buildIconChip(IconData icon) {
-    return Container(
-      width: 44,
-      height: 44,
-      decoration: const BoxDecoration(
-        color: AppColors.primary,
-        shape: BoxShape.circle,
+    return GestureDetector(
+      onTap: () => setState(() {
+        _categoryPanelVisible = !_categoryPanelVisible;
+      }),
+      child: Container(
+        width: 44,
+        height: 44,
+        decoration: const BoxDecoration(
+          color: AppColors.primary,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(icon, color: Colors.white, size: 20),
       ),
-      child: Icon(icon, color: Colors.white, size: 20),
     );
   }
 

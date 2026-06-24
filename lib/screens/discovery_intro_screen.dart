@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../components/primary_button.dart';
 import '../theme/app_colors.dart';
@@ -35,9 +34,23 @@ class DiscoveryIntroScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: AppSpacing.lg),
-              Text(
-                '사진 한 장이\n나만의 도감 카드가 돼요',
-                style: AppTextStyles.titleLarge,
+              Text.rich(
+                TextSpan(
+                  text: '사진 한 장이\n나만의 ',
+                  style: AppTextStyles.titleLarge,
+                  children: [
+                    TextSpan(
+                      text: '도감 카드',
+                      style: AppTextStyles.titleLarge.copyWith(
+                        color: AppColors.primary,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '가 돼요',
+                      style: AppTextStyles.titleLarge,
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: AppSpacing.lg),
               Text(
@@ -216,8 +229,8 @@ class DiscoveryIntroScreen extends StatelessWidget {
                     const SizedBox(height: AppSpacing.md),
                     Text(
                       feature.title,
-                      style: GoogleFonts.jua(
-                        textStyle: AppTextStyles.bodyMedium,
+                      style: AppTextStyles.bodyMedium.copyWith(
+                        fontFamily: 'Jua',
                       ),
                       textAlign: TextAlign.center,
                     ),
