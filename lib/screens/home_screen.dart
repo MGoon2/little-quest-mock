@@ -403,7 +403,9 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   log.title,
-                  style: AppTextStyles.bodyMedium,
+                  style: GoogleFonts.jua(
+                    textStyle: AppTextStyles.bodyMedium,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(

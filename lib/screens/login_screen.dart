@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   // 배경 이미지의 타이틀/로고 영역 확보용 공백
-                  const SizedBox(height: 200),
+                  const SizedBox(height: 150),
                   const Spacer(),
                   // 로그인 카드
                   _buildLoginCard(),

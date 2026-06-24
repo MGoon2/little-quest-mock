@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../components/primary_button.dart';
 import '../theme/app_colors.dart';
@@ -215,7 +216,9 @@ class DiscoveryIntroScreen extends StatelessWidget {
                     const SizedBox(height: AppSpacing.md),
                     Text(
                       feature.title,
-                      style: AppTextStyles.bodyMedium,
+                      style: GoogleFonts.jua(
+                        textStyle: AppTextStyles.bodyMedium,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 4),
