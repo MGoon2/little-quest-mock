@@ -20,8 +20,6 @@ class CameraScreen extends StatefulWidget {
 
 class _CameraScreenState extends State<CameraScreen> {
   String _selectedCategory = '식물';
-  final String _mode = '식물 인식 모드';
-  bool _flashOn = false;
 
   final List<String> _categories = ['식물', '동물', '곤충', '건축물'];
   final List<IconData> _categoryIcons = [
@@ -56,61 +54,21 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   Widget _buildTopControls() {
-    final rightItems = [
-      _TopItem(icon: Icons.flash_on, label: '플래시', onTap: () => setState(() => _flashOn = !_flashOn)),
-      _TopItem(icon: Icons.timer, label: '타이머', onTap: () {}),
-      _TopItem(icon: Icons.bolt, label: '라이브', onTap: () {}),
-      _TopItem(icon: Icons.settings, label: '설정', onTap: () {}),
-    ];
-
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.screenPadding,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.of(context).pop(),
-              child: const Icon(
-                Icons.close,
-                color: Colors.white,
-                size: 28,
-              ),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: const Icon(
+              Icons.close,
+              color: Colors.white,
+              size: 28,
             ),
-            Row(
-              children: rightItems
-                  .map(
-                    (item) => Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: GestureDetector(
-                        onTap: item.onTap,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              item.icon,
-                              color: item.label == '플래시' && _flashOn
-                                  ? AppColors.accentYellow
-                                  : Colors.white,
-                              size: 24,
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              item.label,
-                              style: AppTextStyles.caption.copyWith(
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -118,7 +76,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Widget _buildDiscoveryBanner() {
     return Positioned(
-      top: 110,
+      top: 60,
       left: AppSpacing.screenPadding,
       right: AppSpacing.screenPadding,
       child: Container(
@@ -223,16 +181,14 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget _buildCategoryPanel() {
     return Positioned(
       right: AppSpacing.screenPadding,
-      top: 0,
-      bottom: 0,
-      child: Center(
-        child: Container(
-          padding: const EdgeInsets.all(AppSpacing.sm),
-          decoration: BoxDecoration(
-            color: Colors.black.withValues(alpha: 0.55),
-            borderRadius: BorderRadius.circular(AppRadius.lg),
-          ),
-          child: Column(
+      top: 140,
+      child: Container(
+        padding: const EdgeInsets.all(AppSpacing.sm),
+        decoration: BoxDecoration(
+          color: Colors.black.withValues(alpha: 0.55),
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+        ),
+        child: Column(
             mainAxisSize: MainAxisSize.min,
             children: _categories.asMap().entries.map((entry) {
               final index = entry.key;
@@ -273,8 +229,7 @@ class _CameraScreenState extends State<CameraScreen> {
             }).toList(),
           ),
         ),
-      ),
-    );
+      );
   }
 
   Widget _buildBottomControls() {
@@ -297,15 +252,17 @@ class _CameraScreenState extends State<CameraScreen> {
             children: [
               const SizedBox(height: AppSpacing.lg),
               // 모드/줌/필터
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildModeChip(_mode, Icons.keyboard_arrow_down),
-                  const SizedBox(width: AppSpacing.lg),
-                  _buildZoomChip('1.0x'),
-                  const SizedBox(width: AppSpacing.lg),
-                  _buildIconChip(Icons.eco),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.screenPadding,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildZoomChip('1.0x'),
+                    _buildIconChip(Icons.eco),
+                  ],
+                ),
               ),
               const SizedBox(height: AppSpacing.lg),
               // 탭 바
@@ -315,37 +272,11 @@ class _CameraScreenState extends State<CameraScreen> {
               _buildCaptureControls(),
               const SizedBox(height: AppSpacing.md),
               // 팁 배너
-              _buildTipBanner(),
-              const SizedBox(height: AppSpacing.lg),
+              // _buildTipBanner(),
+              // const SizedBox(height: AppSpacing.lg),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildModeChip(String label, IconData icon) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.md,
-        vertical: AppSpacing.sm,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.65),
-        borderRadius: BorderRadius.circular(AppRadius.full),
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.eco, size: 14, color: Colors.white),
-          const SizedBox(width: 6),
-          Text(
-            label,
-            style: AppTextStyles.captionMedium.copyWith(
-              color: Colors.white,
-            ),
-          ),
-          Icon(icon, size: 16, color: Colors.white),
-        ],
       ),
     );
   }
@@ -499,86 +430,8 @@ class _CameraScreenState extends State<CameraScreen> {
               ),
             ),
           ),
-          // 바로 인식
-          Column(
-            children: [
-              Container(
-                width: 56,
-                height: 56,
-                decoration: BoxDecoration(
-                  color: AppColors.backgroundElevated,
-                  borderRadius: BorderRadius.circular(AppRadius.md),
-                  boxShadow: AppShadows.card,
-                ),
-                child: const Icon(
-                  Icons.qr_code_scanner,
-                  color: AppColors.primary,
-                ),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                '바로 인식',
-                style: AppTextStyles.caption.copyWith(
-                  color: AppColors.textSecondary,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTipBanner() {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.screenPadding,
-      ),
-      padding: const EdgeInsets.all(AppSpacing.md),
-      decoration: BoxDecoration(
-        color: AppColors.primarySoft,
-        borderRadius: BorderRadius.circular(AppRadius.lg),
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: const BoxDecoration(
-              color: AppColors.accentYellowLight,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.lightbulb,
-              size: 18,
-              color: AppColors.accentYellow,
-            ),
-          ),
-          const SizedBox(width: AppSpacing.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '가까이에서 선명하게, 여러 각도에서 찍어보세요!',
-                  style: AppTextStyles.captionMedium.copyWith(
-                    color: AppColors.textPrimary,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  'AI가 더 정확하게 분석할 수 있어요.',
-                  style: AppTextStyles.caption.copyWith(
-                    color: AppColors.textSecondary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          IconButton(
-            icon: const Icon(Icons.close, size: 18),
-            color: AppColors.textSecondary,
-            onPressed: () {},
-          ),
+          // 빈 공간 (촬영 버튼 중앙 정렬 유지용)
+          const SizedBox(width: 56),
         ],
       ),
     );
@@ -662,14 +515,6 @@ class _CameraPreviewPlaceholder extends StatelessWidget {
       ),
     );
   }
-}
-
-class _TopItem {
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  _TopItem({required this.icon, required this.label, required this.onTap});
 }
 
 class _TabItem {
