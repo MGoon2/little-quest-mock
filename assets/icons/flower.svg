@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Flower</title>
+  <circle cx="32" cy="32" r="5" fill="#F4C84A" stroke="#2F6B3F" stroke-width="3"/>
+<path d="M32 12C25 18 25 25 32 28C39 25 39 18 32 12Z" fill="#F8F0A6" stroke="#2F6B3F" stroke-width="3"/>
+<path d="M52 32C46 25 39 25 36 32C39 39 46 39 52 32Z" fill="#F8F0A6" stroke="#2F6B3F" stroke-width="3"/>
+<path d="M32 52C39 46 39 39 32 36C25 39 25 46 32 52Z" fill="#F8F0A6" stroke="#2F6B3F" stroke-width="3"/>
+<path d="M12 32C18 39 25 39 28 32C25 25 18 25 12 32Z" fill="#F8F0A6" stroke="#2F6B3F" stroke-width="3"/>
+</svg>

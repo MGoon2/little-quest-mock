@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Bell</title>
+  <path d="M20 29C20 21 25 15 32 15C39 15 44 21 44 29V39L50 46H14L20 39V29Z" fill="#FFF8E8" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 50C29 54 35 54 36 50" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="47" cy="16" r="5" fill="#F47B54"/>
+</svg>

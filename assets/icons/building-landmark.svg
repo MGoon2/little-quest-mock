@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Building Landmark</title>
+  <path d="M32 10L52 22H12L32 10Z" fill="#FFF8E8" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 50H48" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20 22V48M30 22V48M40 22V48" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 54H52" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="32" cy="18" r="2" fill="#2F6B3F"/>
+</svg>

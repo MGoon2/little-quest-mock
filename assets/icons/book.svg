@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Book</title>
+  <path d="M12 14H28C32 14 32 18 32 18V52C32 52 31 48 27 48H12V14Z" fill="#EAF4DF" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52 14H36C32 14 32 18 32 18V52C32 52 33 48 37 48H52V14Z" fill="#FFF8E8" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20 24H26M20 32H25M39 24H45M39 32H44" stroke="#8BA17B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

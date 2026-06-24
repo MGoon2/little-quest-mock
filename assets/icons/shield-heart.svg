@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Shield Heart</title>
+  <path d="M32 8L50 16V29C50 43 42 53 32 58C22 53 14 43 14 29V16L32 8Z" fill="#EAF4DF" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 40C32 40 22 34 22 27C22 23 25 21 28 21C30 21 31 22 32 24C33 22 34 21 36 21C39 21 42 23 42 27C42 34 32 40 32 40Z" fill="#E88D7D" stroke="#2F6B3F" stroke-width="3" stroke-linejoin="round"/>
+</svg>

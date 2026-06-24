@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Map</title>
+  <path d="M12 16L25 10L39 16L52 10V48L39 54L25 48L12 54V16Z" fill="#EAF4DF" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M25 10V48M39 16V54" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 25C32 25 25 30 25 37C25 41 28 44 32 44C36 44 39 41 39 37C39 30 32 25 32 25Z" fill="#F4C84A" stroke="#2F6B3F" stroke-width="3"/>
+<circle cx="32" cy="36" r="3" fill="#2F6B3F"/>
+</svg>

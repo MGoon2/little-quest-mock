@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Settings</title>
+  <path d="M32 22C26.5 22 22 26.5 22 32C22 37.5 26.5 42 32 42C37.5 42 42 37.5 42 32C42 26.5 37.5 22 32 22Z" fill="#EAF4DF" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 8V14M32 50V56M12 32H8M56 32H52M17.5 17.5L13 13M51 51L46.5 46.5M46.5 17.5L51 13M13 51L17.5 46.5" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

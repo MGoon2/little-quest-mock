@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Leaf</title>
+  <path d="M52 12C31 13 14 26 13 50C37 49 51 33 52 12Z" fill="#91C46B" stroke="#2F6B3F" stroke-width="4" stroke-linejoin="round"/>
+<path d="M44 20C34 29 26 38 14 50" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30 34C30 26 27 22 23 18" stroke="#2F6B3F" stroke-width="3" stroke-linecap="round"/>
+<path d="M36 28C43 29 47 27 50 23" stroke="#2F6B3F" stroke-width="3" stroke-linecap="round"/>
+</svg>

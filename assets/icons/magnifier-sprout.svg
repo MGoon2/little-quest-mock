@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Magnifier Sprout</title>
+  <circle cx="27" cy="27" r="16" fill="#EAF4DF" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39 39L54 54" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27 39V26" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27 27C21 20 14 21 13 30C21 31 25 30 27 27Z" fill="#76A85B" stroke="#2F6B3F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M27 27C34 19 42 21 43 31C34 32 30 30 27 27Z" fill="#91C46B" stroke="#2F6B3F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M15 15L11 11M18 10L18 5" stroke="#F4C84A" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Paw</title>
+  <path d="M22 36C15 41 16 52 27 51H37C48 52 49 41 42 36C38 33 36 28 32 28C28 28 26 33 22 36Z" fill="#EAF4DF" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="18" cy="24" rx="5" ry="7" fill="#9E8A66" stroke="#2F6B3F" stroke-width="3"/>
+<ellipse cx="30" cy="18" rx="5" ry="7" fill="#9E8A66" stroke="#2F6B3F" stroke-width="3"/>
+<ellipse cx="46" cy="24" rx="5" ry="7" fill="#9E8A66" stroke="#2F6B3F" stroke-width="3"/>
+<ellipse cx="40" cy="17" rx="5" ry="7" fill="#9E8A66" stroke="#2F6B3F" stroke-width="3"/>
+</svg>

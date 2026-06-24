@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Butterfly</title>
+  <path d="M31 31C23 18 10 16 9 29C10 40 24 39 31 31Z" fill="#F4C84A" stroke="#2F6B3F" stroke-width="3"/>
+<path d="M33 31C41 18 54 16 55 29C54 40 40 39 33 31Z" fill="#F4C84A" stroke="#2F6B3F" stroke-width="3"/>
+<path d="M31 35C23 48 11 47 10 37C16 31 25 30 31 35Z" fill="#F8D76E" stroke="#2F6B3F" stroke-width="3"/>
+<path d="M33 35C41 48 53 47 54 37C48 31 39 30 33 35Z" fill="#F8D76E" stroke="#2F6B3F" stroke-width="3"/>
+<path d="M32 27V45" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 24C27 19 23 17 20 16M36 24C37 19 41 17 44 16" stroke="#2F6B3F" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <title>Scan Frame</title>
+  <path d="M12 24V14C12 12.9 12.9 12 14 12H24" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M40 12H50C51.1 12 52 12.9 52 14V24" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52 40V50C52 51.1 51.1 52 50 52H40" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 52H14C12.9 52 12 51.1 12 50V40" stroke="#2F6B3F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 32H42" stroke="#8BA17B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
