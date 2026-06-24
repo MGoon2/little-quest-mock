@@ -5,39 +5,53 @@ import 'app_colors.dart';
 
 /// Little Quest의 타이포그래피 스케일.
 ///
-/// 이미지에서 사용된 둥근 산세리프 느낌을 위해 Noto Sans KR을 기본으로 사용한다.
+/// - 영문 로고: Fredoka Bold (Google Fonts)
+/// - 한글 타이틀/헤딩 문구: Jua (Google Fonts)
+/// - 앱 본문/UI: Pretendard (수동 번들, Google Fonts에 없음)
 abstract final class AppTextStyles {
-  static TextStyle get _base => GoogleFonts.notoSansKr();
+  // 본문/UI 기본 폰트. Pretendard는 pubspec에 번들링한 에셋 폰트.
+  static TextStyle get _base => const TextStyle(fontFamily: 'Pretendard');
+  // 한글 타이틀/헤딩용 장식 폰트.
+  static TextStyle get _display => GoogleFonts.jua();
+  // 영문 로고용 폰트.
+  static TextStyle get _logo => GoogleFonts.fredoka(fontWeight: FontWeight.w700);
 
-  static TextStyle get display => _base.copyWith(
+  /// 영문 로고 전용 스타일. AppBar의 "Little Quest" 타이틀 등에 사용.
+  static TextStyle get logo => _logo.copyWith(
+        fontSize: 20,
+        color: AppColors.primary,
+        letterSpacing: -0.3,
+      );
+
+  static TextStyle get display => _display.copyWith(
         fontSize: 28,
         fontWeight: FontWeight.w700,
         color: AppColors.textPrimary,
         letterSpacing: -0.5,
       );
 
-  static TextStyle get titleLarge => _base.copyWith(
+  static TextStyle get titleLarge => _display.copyWith(
         fontSize: 24,
         fontWeight: FontWeight.w700,
         color: AppColors.textPrimary,
         letterSpacing: -0.5,
       );
 
-  static TextStyle get titleMedium => _base.copyWith(
+  static TextStyle get titleMedium => _display.copyWith(
         fontSize: 20,
         fontWeight: FontWeight.w700,
         color: AppColors.textPrimary,
         letterSpacing: -0.3,
       );
 
-  static TextStyle get titleSmall => _base.copyWith(
+  static TextStyle get titleSmall => _display.copyWith(
         fontSize: 18,
         fontWeight: FontWeight.w700,
         color: AppColors.textPrimary,
         letterSpacing: -0.3,
       );
 
-  static TextStyle get heading => _base.copyWith(
+  static TextStyle get heading => _display.copyWith(
         fontSize: 16,
         fontWeight: FontWeight.w700,
         color: AppColors.textPrimary,

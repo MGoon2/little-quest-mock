@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../components/app_scaffold.dart';
 import '../components/discovery_card.dart';
@@ -12,7 +13,7 @@ import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
 import 'discovery_intro_screen.dart';
-import 'photo_upload_screen.dart';
+import 'camera_screen.dart';
 
 /// 메인 홈 화면.
 class HomeScreen extends StatefulWidget {
@@ -155,9 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         title: Text(
           'Little Quest',
-          style: AppTextStyles.titleMedium.copyWith(
-            color: AppColors.primary,
-          ),
+          style: AppTextStyles.logo,
         ),
         leading: IconButton(
           icon: const Icon(Icons.menu),
@@ -297,8 +296,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: AppSpacing.sm),
                 Text(
                   banner.subtitle,
-                  style: AppTextStyles.body.copyWith(
-                    color: AppColors.textSecondary,
+                  style: GoogleFonts.jua(
+                    textStyle: AppTextStyles.body.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                 ),
               ],
@@ -344,20 +345,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildCameraFab() {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 24),
-      decoration: BoxDecoration(
-        color: AppColors.primary,
-        shape: BoxShape.circle,
-        boxShadow: AppShadows.soft,
-      ),
+    return SizedBox(
+      width: 48,
+      height: 48,
       child: FloatingActionButton(
         onPressed: () => _openCamera(context),
         backgroundColor: AppColors.primary,
         elevation: 0,
+        shape: const CircleBorder(),
         child: const Icon(
           Icons.camera_alt,
           color: AppColors.textInverse,
+          size: 24,
         ),
       ),
     );
@@ -444,7 +443,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _openCamera(BuildContext context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const PhotoUploadScreen()),
+      MaterialPageRoute(builder: (_) => const CameraScreen()),
     );
   }
 

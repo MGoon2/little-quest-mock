@@ -62,10 +62,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () => Navigator.of(context).pop(),
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  // 로그인 카드 (배경 이미지에 이미 로고/타이틀이 있으므로 중복 제거)
-                  _buildLoginCard(),
+                  // 배경 이미지의 타이틀/로고 영역 확보용 공백
+                  const SizedBox(height: 200),
                   const Spacer(),
+                  // 로그인 카드
+                  _buildLoginCard(),
                 ],
               ),
             ),
@@ -253,29 +254,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildSocialLoginRow() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Expanded(
-          child: _SocialButton(
-            label: '네이버로 로그인',
-            icon: _naverIcon(),
-            onTap: () {},
-          ),
+        _SocialButton(
+          icon: _naverIcon(),
+          onTap: () {},
         ),
-        const SizedBox(width: AppSpacing.md),
-        Expanded(
-          child: _SocialButton(
-            label: 'Apple로 로그인',
-            icon: const Icon(Icons.apple, color: AppColors.textPrimary),
-            onTap: () {},
-          ),
+        _SocialButton(
+          icon: const Icon(Icons.apple,
+              color: AppColors.textPrimary, size: 28),
+          onTap: () {},
         ),
-        const SizedBox(width: AppSpacing.md),
-        Expanded(
-          child: _SocialButton(
-            label: 'Google로 로그인',
-            icon: _googleIcon(),
-            onTap: () {},
-          ),
+        _SocialButton(
+          icon: _googleIcon(),
+          onTap: () {},
         ),
       ],
     );
@@ -283,18 +275,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _naverIcon() {
     return Container(
-      width: 22,
-      height: 22,
+      width: 28,
+      height: 28,
       decoration: const BoxDecoration(
         color: Color(0xFF03C75A),
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
       child: const Center(
         child: Text(
           'N',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 14,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -307,7 +299,7 @@ class _LoginScreenState extends State<LoginScreen> {
       'G',
       style: TextStyle(
         color: Color(0xFF4285F4),
-        fontSize: 20,
+        fontSize: 28,
         fontWeight: FontWeight.bold,
       ),
     );
@@ -323,12 +315,10 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class _SocialButton extends StatelessWidget {
-  final String label;
   final Widget icon;
   final VoidCallback onTap;
 
   const _SocialButton({
-    required this.label,
     required this.icon,
     required this.onTap,
   });
@@ -338,28 +328,15 @@ class _SocialButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: AppSpacing.md,
-        ),
+        width: 56,
+        height: 56,
         decoration: BoxDecoration(
           color: AppColors.backgroundElevated,
           borderRadius: BorderRadius.circular(AppRadius.md),
           border: Border.all(color: AppColors.divider),
           boxShadow: AppShadows.card,
         ),
-        child: Column(
-          children: [
-            icon,
-            const SizedBox(height: 6),
-            Text(
-              label,
-              style: AppTextStyles.caption.copyWith(
-                color: AppColors.textSecondary,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+        child: Center(child: icon),
       ),
     );
   }

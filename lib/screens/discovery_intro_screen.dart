@@ -6,7 +6,7 @@ import '../theme/app_radius.dart';
 import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
-import 'photo_upload_screen.dart';
+import 'camera_screen.dart';
 
 /// 발견 카드 소개 화면.
 ///
@@ -56,7 +56,7 @@ class DiscoveryIntroScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (_) => const PhotoUploadScreen(),
+                      builder: (_) => const CameraScreen(),
                     ),
                   );
                 },

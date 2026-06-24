@@ -51,6 +51,8 @@ class BottomNavigation extends StatelessWidget {
             unselectedItemColor: AppColors.textTertiary,
             selectedFontSize: 11,
             unselectedFontSize: 11,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             elevation: 0,
           ),
         ),
