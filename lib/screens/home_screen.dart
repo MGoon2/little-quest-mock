@@ -24,6 +24,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
+  int _currentBannerIndex = 0;
+  final PageController _bannerController = PageController();
+
+  @override
+  void dispose() {
+    _bannerController.dispose();
+    super.dispose();
+  }
 
   final List<Quest> _quests = const [
     Quest(
@@ -118,6 +126,26 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
+  final List<_BannerData> _banners = const [
+    _BannerData(
+      title: '안녕, 자두야! 👋',
+      subtitle: '오늘도 새로운 발견을\n기록해볼까?',
+      image: 'assets/images/home_banner.png',
+    ),
+    _BannerData(
+      title: '오늘의 퀘스트',
+      subtitle: '공원에서 3가지 식물을\n찾아보세요!',
+      gradientColors: [AppColors.accentYellowLight, AppColors.accentCoralLight],
+      icon: Icons.search,
+    ),
+  ];
+
+  final List<_LogData> _logs = const [
+    _LogData(title: '서울숲 가족마당', date: '2024.05.20', count: 12),
+    _LogData(title: '올림픽공원', date: '2024.05.18', count: 8),
+    _LogData(title: '남산공원', date: '2024.05.15', count: 15),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
@@ -147,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
-          SliverToBoxAdapter(child: _buildWelcomeBanner()),
+          SliverToBoxAdapter(child: _buildBannerArea()),
           const SliverToBoxAdapter(
             child: SizedBox(height: AppSpacing.sectionGap),
           ),
@@ -201,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
-          SliverToBoxAdapter(child: _buildRecentLogCard()),
+          SliverToBoxAdapter(child: _buildLogCardArea()),
           const SliverToBoxAdapter(
             child: SizedBox(height: AppSpacing.sectionGap + 56),
           ),
@@ -210,18 +238,51 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildWelcomeBanner() {
-    return Container(
-      height: 160,
-      padding: const EdgeInsets.all(AppSpacing.cardPadding),
-      decoration: BoxDecoration(
-        image: const DecorationImage(
-          image: AssetImage('assets/images/home_banner.png'),
+  Widget _buildBannerArea() {
+    return Column(
+      children: [
+        SizedBox(
+          height: 160,
+          child: PageView.builder(
+            controller: _bannerController,
+            itemCount: _banners.length,
+            onPageChanged: (index) =>
+                setState(() => _currentBannerIndex = index),
+            itemBuilder: (_, index) => _buildBanner(_banners[index]),
+          ),
+        ),
+        const SizedBox(height: AppSpacing.md),
+        _buildPageIndicator(_banners.length, _currentBannerIndex),
+      ],
+    );
+  }
+
+  Widget _buildBanner(_BannerData banner) {
+    Decoration? decoration;
+    if (banner.image != null) {
+      decoration = BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(banner.image!),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(AppRadius.lg),
         boxShadow: AppShadows.card,
-      ),
+      );
+    } else if (banner.gradientColors != null) {
+      decoration = BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: banner.gradientColors!,
+        ),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        boxShadow: AppShadows.card,
+      );
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.cardPadding),
+      decoration: decoration,
       child: Row(
         children: [
           Expanded(
@@ -230,12 +291,12 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '안녕, 자두야! 👋',
+                  banner.title,
                   style: AppTextStyles.titleSmall,
                 ),
                 const SizedBox(height: AppSpacing.sm),
                 Text(
-                  '오늘도 새로운 발견을\n기록해볼까?',
+                  banner.subtitle,
                   style: AppTextStyles.body.copyWith(
                     color: AppColors.textSecondary,
                   ),
@@ -243,8 +304,42 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          if (banner.icon != null)
+            Container(
+              width: 72,
+              height: 72,
+              decoration: const BoxDecoration(
+                color: AppColors.backgroundElevated,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                banner.icon,
+                size: 36,
+                color: AppColors.primary,
+              ),
+            ),
         ],
       ),
+    );
+  }
+
+  Widget _buildPageIndicator(int count, int currentIndex) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(count, (index) {
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: index == currentIndex ? 16 : 8,
+          height: 8,
+          margin: const EdgeInsets.symmetric(horizontal: 4),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: index == currentIndex
+                ? AppColors.primary
+                : AppColors.divider,
+          ),
+        );
+      }),
     );
   }
 
@@ -268,7 +363,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildRecentLogCard() {
+  Widget _buildLogCardArea() {
+    return SizedBox(
+      height: 88,
+      child: PageView.builder(
+        itemCount: _logs.length,
+        itemBuilder: (_, index) => _buildLogCard(_logs[index]),
+      ),
+    );
+  }
+
+  Widget _buildLogCard(_LogData log) {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.cardPadding),
       decoration: BoxDecoration(
@@ -294,14 +399,15 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '서울숲 가족마당',
+                  log.title,
                   style: AppTextStyles.bodyMedium,
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '2024.05.20 · 12종류 발견',
+                  '${log.date} · ${log.count}종류 발견',
                   style: AppTextStyles.caption,
                 ),
               ],
@@ -351,4 +457,32 @@ class _HomeScreenState extends State<HomeScreen> {
       arguments: item,
     );
   }
+}
+
+class _BannerData {
+  final String title;
+  final String subtitle;
+  final String? image;
+  final List<Color>? gradientColors;
+  final IconData? icon;
+
+  const _BannerData({
+    required this.title,
+    required this.subtitle,
+    this.image,
+    this.gradientColors,
+    this.icon,
+  });
+}
+
+class _LogData {
+  final String title;
+  final String date;
+  final int count;
+
+  const _LogData({
+    required this.title,
+    required this.date,
+    required this.count,
+  });
 }
