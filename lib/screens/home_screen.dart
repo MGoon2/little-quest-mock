@@ -198,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: SectionHeader(
               title: '나의 발견 카드',
               actionLabel: '전체 보기',
-              onAction: () {},
+              onAction: () => _openDiscoveryCards(context),
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
@@ -428,9 +428,7 @@ class _HomeScreenState extends State<HomeScreen> {
       return;
     }
     if (index == 1) {
-      Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => const DiscoveryCardScreen()),
-      );
+      _openDiscoveryCards(context);
       return;
     }
     if (index == 3) {
@@ -444,6 +442,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void _openCamera(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => const CameraScreen()),
+    );
+  }
+
+  void _openDiscoveryCards(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const DiscoveryCardScreen()),
     );
   }
 

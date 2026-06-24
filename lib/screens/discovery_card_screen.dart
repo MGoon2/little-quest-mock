@@ -268,7 +268,7 @@ class _DiscoveryCardScreenState extends State<DiscoveryCardScreen> {
               _buildSectionHeader(group),
               const SizedBox(height: AppSpacing.lg),
               SizedBox(
-                height: 200,
+                height: DiscoveryMiniCard.cardHeight,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.only(right: AppSpacing.screenPadding),
