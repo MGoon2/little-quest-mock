@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'models/discovery_card_item.dart';
 import 'screens/card_detail_screen.dart';
+import 'screens/discovery_card_detail_screen.dart';
 import 'screens/discovery_card_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
@@ -29,9 +30,10 @@ class LittleQuestApp extends StatelessWidget {
         '/home': (context) => const HomeScreen(),
         '/discovery-cards': (context) => const DiscoveryCardScreen(),
         '/map': (context) => const MapScreen(),
+        '/card-detail': (context) => const DiscoveryCardDetailScreen(),
       },
       onGenerateRoute: (settings) {
-        if (settings.name == '/card-detail') {
+        if (settings.name == '/card-detail-legacy') {
           final item = settings.arguments as DiscoveryCardItem;
           return MaterialPageRoute(
             builder: (context) => CardDetailScreen(item: item),

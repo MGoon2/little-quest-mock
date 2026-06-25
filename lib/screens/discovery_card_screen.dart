@@ -84,9 +84,7 @@ class _DiscoveryCardScreenState extends State<DiscoveryCardScreen> {
             slivers: [
               const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
               SliverToBoxAdapter(child: _buildCategorySelector()),
-              const SliverToBoxAdapter(
-                child: SizedBox(height: AppSpacing.lg),
-              ),
+              const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
               SliverToBoxAdapter(child: _buildSummaryBanner()),
               const SliverToBoxAdapter(
                 child: SizedBox(height: AppSpacing.sectionGap),
@@ -95,13 +93,9 @@ class _DiscoveryCardScreenState extends State<DiscoveryCardScreen> {
                 _buildGroupedList()
               else
                 _buildCategoryGrid(),
-              const SliverToBoxAdapter(
-                child: SizedBox(height: AppSpacing.xxl),
-              ),
+              const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.xxl)),
               SliverToBoxAdapter(child: _buildCtaBanner()),
-              const SliverToBoxAdapter(
-                child: SizedBox(height: AppSpacing.xxl),
-              ),
+              const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.xxl)),
             ],
           ),
         ),
@@ -134,10 +128,7 @@ class _DiscoveryCardScreenState extends State<DiscoveryCardScreen> {
                   color: AppColors.primary,
                 ),
                 const SizedBox(width: AppSpacing.md),
-                Text(
-                  _selectedCategory.label,
-                  style: AppTextStyles.bodyMedium,
-                ),
+                Text(_selectedCategory.label, style: AppTextStyles.bodyMedium),
               ],
             ),
             const Icon(
@@ -168,22 +159,23 @@ class _DiscoveryCardScreenState extends State<DiscoveryCardScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '카테고리 선택',
-                  style: AppTextStyles.titleSmall,
-                ),
+                Text('카테고리 선택', style: AppTextStyles.titleSmall),
                 const SizedBox(height: AppSpacing.lg),
                 ...DiscoveryCategory.values.map((category) {
                   final isSelected = _selectedCategory == category;
                   return ListTile(
                     leading: Icon(
                       category.icon,
-                      color: isSelected ? AppColors.primary : AppColors.textSecondary,
+                      color: isSelected
+                          ? AppColors.primary
+                          : AppColors.textSecondary,
                     ),
                     title: Text(
                       category.label,
                       style: AppTextStyles.bodyMedium.copyWith(
-                        color: isSelected ? AppColors.primary : AppColors.textPrimary,
+                        color: isSelected
+                            ? AppColors.primary
+                            : AppColors.textPrimary,
                       ),
                     ),
                     trailing: isSelected
@@ -259,33 +251,30 @@ class _DiscoveryCardScreenState extends State<DiscoveryCardScreen> {
     }
 
     return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          final group = groups[index];
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildSectionHeader(group),
-              const SizedBox(height: AppSpacing.lg),
-              SizedBox(
-                height: DiscoveryMiniCard.cardHeight,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.only(right: AppSpacing.screenPadding),
-                  itemCount: group.cards.length,
-                  separatorBuilder: (_, index) => const SizedBox(width: 12),
-                  itemBuilder: (_, cardIndex) => DiscoveryMiniCard(
-                    card: group.cards[cardIndex],
-                    onTap: () {},
-                  ),
+      delegate: SliverChildBuilderDelegate((context, index) {
+        final group = groups[index];
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildSectionHeader(group),
+            const SizedBox(height: AppSpacing.lg),
+            SizedBox(
+              height: DiscoveryMiniCard.cardHeight,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.only(right: AppSpacing.screenPadding),
+                itemCount: group.cards.length,
+                separatorBuilder: (_, index) => const SizedBox(width: 12),
+                itemBuilder: (_, cardIndex) => DiscoveryMiniCard(
+                  card: group.cards[cardIndex],
+                  onTap: () => Navigator.of(context).pushNamed('/card-detail'),
                 ),
               ),
-              const SizedBox(height: AppSpacing.sectionGap),
-            ],
-          );
-        },
-        childCount: groups.length,
-      ),
+            ),
+            const SizedBox(height: AppSpacing.sectionGap),
+          ],
+        );
+      }, childCount: groups.length),
     );
   }
 
@@ -299,20 +288,14 @@ class _DiscoveryCardScreenState extends State<DiscoveryCardScreen> {
             color: group.category.backgroundColor,
             shape: BoxShape.circle,
           ),
-          child: Icon(
-            group.category.icon,
-            color: AppColors.primary,
-          ),
+          child: Icon(group.category.icon, color: AppColors.primary),
         ),
         const SizedBox(width: AppSpacing.lg),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                group.category.sectionTitle,
-                style: AppTextStyles.heading,
-              ),
+              Text(group.category.sectionTitle, style: AppTextStyles.heading),
               const SizedBox(height: AppSpacing.xs),
               Text(
                 group.category.sectionDescription,
@@ -403,7 +386,7 @@ class _DiscoveryCardScreenState extends State<DiscoveryCardScreen> {
                 itemCount: cards.length,
                 itemBuilder: (_, index) => DiscoveryMiniCard(
                   card: cards[index],
-                  onTap: () {},
+                  onTap: () => Navigator.of(context).pushNamed('/card-detail'),
                 ),
               );
             },
@@ -431,9 +414,7 @@ class _DiscoveryCardScreenState extends State<DiscoveryCardScreen> {
           const SizedBox(height: AppSpacing.sm),
           Text(
             '새로운 ${_selectedCategory == DiscoveryCategory.all ? '발견' : _selectedCategory.label}을 발견하면 사진으로 기록해보세요.',
-            style: AppTextStyles.body.copyWith(
-              color: AppColors.textSecondary,
-            ),
+            style: AppTextStyles.body.copyWith(color: AppColors.textSecondary),
           ),
           const SizedBox(height: AppSpacing.lg),
           PrimaryButton(
