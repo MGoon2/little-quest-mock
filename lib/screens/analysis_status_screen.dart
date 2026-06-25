@@ -5,6 +5,8 @@ import '../theme/app_colors.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
+import 'camera_screen.dart';
+import 'discovery_card_screen.dart';
 
 /// AI 분석 상태 화면.
 class AnalysisStatusScreen extends StatefulWidget {
@@ -79,9 +81,39 @@ class _AnalysisStatusScreenState extends State<AnalysisStatusScreen>
               _buildProgressIndicator(),
               const Spacer(),
               if (_step == _steps.length - 1)
-                PrimaryButton(
-                  label: '카드 확인하기',
-                  onPressed: () => Navigator.of(context).pop(),
+                Row(
+                  children: [
+                    Expanded(
+                      child: PrimaryButton(
+                        label: '카드 더 만들기',
+                        isSecondary: true,
+                        icon: const Icon(Icons.camera_alt, size: 20),
+                        onPressed: () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (_) => const CameraScreen(),
+                            ),
+                            (route) => route.isFirst,
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: AppSpacing.md),
+                    Expanded(
+                      child: PrimaryButton(
+                        label: '카드 확인하기',
+                        icon: const Icon(Icons.style, size: 20),
+                        onPressed: () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (_) => const DiscoveryCardScreen(),
+                            ),
+                            (route) => route.isFirst,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               const SizedBox(height: AppSpacing.xxl),
             ],

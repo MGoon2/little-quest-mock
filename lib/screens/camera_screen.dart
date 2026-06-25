@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
-import 'analysis_status_screen.dart';
+import 'photo_preview_screen.dart';
 
 /// 카메라 촬영 화면.
 ///
@@ -21,6 +22,7 @@ class CameraScreen extends StatefulWidget {
 class _CameraScreenState extends State<CameraScreen> {
   String _selectedCategory = '자동';
   bool _categoryPanelVisible = false;
+  bool _isCapturing = false;
 
   final List<String> _categories = ['자동', '식물', '동물', '곤충', '건축물'];
   final List<IconData> _categoryIcons = [
@@ -324,25 +326,35 @@ class _CameraScreenState extends State<CameraScreen> {
           ),
           // 촬영 버튼
           GestureDetector(
-            onTap: () => _analyze(context),
-            child: Container(
-              width: 88,
-              height: 88,
-              padding: const EdgeInsets.all(8),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-                boxShadow: AppShadows.soft,
-              ),
+            onTapDown: (_) => setState(() => _isCapturing = true),
+            onTapUp: (_) {
+              setState(() => _isCapturing = false);
+              _analyze(context);
+            },
+            onTapCancel: () => setState(() => _isCapturing = false),
+            child: AnimatedScale(
+              scale: _isCapturing ? 0.88 : 1.0,
+              duration: const Duration(milliseconds: 120),
+              curve: Curves.easeInOut,
               child: Container(
+                width: 88,
+                height: 88,
+                padding: const EdgeInsets.all(8),
                 decoration: const BoxDecoration(
-                  color: AppColors.primary,
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.eco,
-                  size: 36,
                   color: Colors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: AppShadows.soft,
+                ),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: AppColors.primary,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.eco,
+                    size: 36,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -355,9 +367,19 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   void _analyze(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const AnalysisStatusScreen()),
-    );
+    // 셔터 소리 + 햅틱 피드백
+    SystemSound.play(SystemSoundType.click);
+    HapticFeedback.mediumImpact();
+
+    // 잠시 대기 후 미리보기 스크린으로 이동
+    Future.delayed(const Duration(milliseconds: 300), () {
+      if (!context.mounted) return;
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => const PhotoPreviewScreen(),
+        ),
+      );
+    });
   }
 }
 

@@ -4,6 +4,7 @@ import '../components/app_scaffold.dart';
 import '../components/discovery_card.dart';
 import '../components/quest_card.dart';
 import '../components/section_header.dart';
+import '../components/side_menu.dart';
 import '../models/discovery_card_item.dart';
 import '../models/quest.dart';
 import '../theme/app_colors.dart';
@@ -128,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<_BannerData> _banners = const [
     _BannerData(
-      title: '안녕, 자두야! 👋',
+      title: '안녕, 시아야! 👋',
       subtitle: '오늘도 새로운 발견을\n기록해볼까?',
       image: 'assets/images/home_banner.png',
     ),
@@ -159,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         leading: IconButton(
           icon: const Icon(Icons.menu),
-          onPressed: () {},
+          onPressed: () => _openSideMenu(context),
         ),
         actions: [
           IconButton(
@@ -437,6 +438,46 @@ class _HomeScreenState extends State<HomeScreen> {
       return;
     }
     setState(() => _currentIndex = index);
+  }
+
+  void _openSideMenu(BuildContext context) {
+    showSideMenu(
+      context,
+      items: [
+        SideMenuItem(
+          icon: Icons.home_outlined,
+          label: '홈',
+          onTap: () {
+            // 이미 홈에 있음
+          },
+        ),
+        SideMenuItem(
+          icon: Icons.style_outlined,
+          label: '도감',
+          onTap: () => _openDiscoveryCards(context),
+        ),
+        SideMenuItem(
+          icon: Icons.visibility_outlined,
+          label: '관찰',
+          onTap: () {},
+        ),
+        SideMenuItem(
+          icon: Icons.flag_outlined,
+          label: '퀘스트',
+          onTap: () {},
+        ),
+        SideMenuItem(
+          icon: Icons.map_outlined,
+          label: '탐험지도',
+          onTap: () => Navigator.of(context).pushNamed('/map'),
+        ),
+        SideMenuItem(
+          icon: Icons.person_outline,
+          label: '내 정보',
+          onTap: () {},
+        ),
+      ],
+    );
   }
 
   void _openCamera(BuildContext context) {
