@@ -22,8 +22,8 @@ class BottomNavigation extends StatelessWidget {
       padding: const EdgeInsets.only(
         left: AppSpacing.screenPadding,
         right: AppSpacing.screenPadding,
-        bottom: AppSpacing.lg,
-        top: AppSpacing.sm,
+        bottom: AppSpacing.sm,
+        top: AppSpacing.xs,
       ),
       child: Container(
         decoration: BoxDecoration(
@@ -54,6 +54,7 @@ class BottomNavigation extends StatelessWidget {
             showSelectedLabels: false,
             showUnselectedLabels: false,
             elevation: 0,
+            iconSize: 24,
           ),
         ),
       ),
