@@ -514,7 +514,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _openQuestDetail(BuildContext context) {
-    // 퀘스트 상세
+    Navigator.of(context).pushNamed('/quest-detail');
   }
 
   void _openDiscoveryDetail(BuildContext context, DiscoveryCardItem item) {
