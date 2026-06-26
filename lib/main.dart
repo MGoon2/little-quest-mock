@@ -8,6 +8,7 @@ import 'screens/home_screen.dart';
 import 'screens/quest_detail_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/map_screen.dart';
+import 'screens/my_page_screen.dart';
 import 'screens/welcome_screen.dart';
 import 'theme/app_theme.dart';
 
@@ -32,6 +33,7 @@ class LittleQuestApp extends StatelessWidget {
         '/discovery-cards': (context) => const DiscoveryCardScreen(),
         '/map': (context) => const MapScreen(),
         '/quest-detail': (context) => const QuestDetailScreen(),
+        '/my-page': (context) => const MyPageScreen(),
         '/card-detail': (context) => const DiscoveryCardDetailScreen(),
       },
       onGenerateRoute: (settings) {

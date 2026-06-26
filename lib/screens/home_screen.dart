@@ -459,6 +459,10 @@ class _HomeScreenState extends State<HomeScreen> {
       Navigator.of(context).pushNamed('/map');
       return;
     }
+    if (index == 4) {
+      Navigator.of(context).pushNamed('/my-page');
+      return;
+    }
     setState(() => _currentIndex = index);
   }
 
@@ -500,7 +504,7 @@ class _HomeScreenState extends State<HomeScreen> {
         SideMenuItem(
           icon: Icons.person_outline,
           label: '내 정보',
-          onTap: () {},
+          onTap: () => Navigator.of(context).pushNamed('/my-page'),
         ),
       ],
     );

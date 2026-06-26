@@ -63,6 +63,7 @@ flutter:
     - assets/images/welcome_background.png
     - assets/images/login_bg.png
     - assets/images/home_banner.png
+    - assets/images/my_page_bg.png
 
   fonts:
     - family: Pretendard
