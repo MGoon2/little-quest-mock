@@ -15,6 +15,7 @@ import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
 import 'camera_screen.dart';
 import 'discovery_card_screen.dart';
+import 'quest_detail_screen.dart';
 
 /// 메인 홈 화면.
 class HomeScreen extends StatefulWidget {
@@ -446,7 +447,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onNavTap(int index) {
     if (index == 2) {
-      _openCamera(context);
+      _openQuestDetail(context);
       return;
     }
     if (index == 1) {
@@ -485,7 +486,11 @@ class _HomeScreenState extends State<HomeScreen> {
         SideMenuItem(
           icon: Icons.flag_outlined,
           label: '퀘스트',
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const QuestDetailScreen()),
+            );
+          },
         ),
         SideMenuItem(
           icon: Icons.map_outlined,
@@ -514,7 +519,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _openQuestDetail(BuildContext context) {
-    Navigator.of(context).pushNamed('/quest-detail');
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const QuestDetailScreen()),
+    );
   }
 
   void _openDiscoveryDetail(BuildContext context, DiscoveryCardItem item) {
