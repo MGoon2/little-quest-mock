@@ -19,7 +19,7 @@ class BottomNavigation extends StatelessWidget {
   static const _items = [
     _NavItem(icon: Icons.home_outlined, label: '홈'),
     _NavItem(icon: Icons.style_outlined, label: '카드'),
-    _NavItem(icon: Icons.search_rounded, label: '퀘스트'),
+    _NavItem(icon: Icons.task_outlined, label: '퀘스트'),
     _NavItem(icon: Icons.map_outlined, label: '지도'),
   ];
 

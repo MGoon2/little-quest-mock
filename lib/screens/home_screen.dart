@@ -186,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: SectionHeader(
               title: '오늘의 퀘스트',
               actionLabel: '전체 보기',
-              onAction: () {},
+              onAction: () => _openQuestDetail(context),
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
@@ -228,7 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: SectionHeader(
               title: '탐험 기록',
               actionLabel: '전체 보기',
-              onAction: () {},
+              onAction: () => Navigator.of(context).pushNamed('/map'),
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
@@ -485,7 +485,7 @@ class _HomeScreenState extends State<HomeScreen> {
         SideMenuItem(
           icon: Icons.visibility_outlined,
           label: '관찰',
-          onTap: () {},
+          onTap: () => _openCamera(context),
         ),
         SideMenuItem(
           icon: Icons.flag_outlined,
