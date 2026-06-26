@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../components/app_scaffold.dart';
 import '../components/discovery_card.dart';
@@ -132,12 +133,14 @@ class _HomeScreenState extends State<HomeScreen> {
       title: '안녕, 시아야! 👋',
       subtitle: '오늘도 새로운 발견을\n기록해볼까?',
       image: 'assets/images/home_banner.png',
+      url: 'https://windsurf.com',
     ),
     _BannerData(
       title: '오늘의 퀘스트',
       subtitle: '공원에서 3가지 식물을\n찾아보세요!',
       gradientColors: [AppColors.accentYellowLight, AppColors.accentCoralLight],
       icon: Icons.search,
+      routeName: '/discovery-cards',
     ),
   ];
 
@@ -279,48 +282,66 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
-    return Container(
-      padding: const EdgeInsets.all(AppSpacing.cardPadding),
-      decoration: decoration,
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  banner.title,
-                  style: AppTextStyles.titleSmall,
-                ),
-                const SizedBox(height: AppSpacing.sm),
-                Text(
-                  banner.subtitle,
-                  style: AppTextStyles.body.copyWith(
-                    color: AppColors.textSecondary,
-                    fontFamily: 'Jua',
+    return GestureDetector(
+      onTap: () => _onBannerTap(banner),
+      child: Container(
+        padding: const EdgeInsets.all(AppSpacing.cardPadding),
+        decoration: decoration,
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    banner.title,
+                    style: AppTextStyles.titleSmall,
                   ),
+                  const SizedBox(height: AppSpacing.sm),
+                  Text(
+                    banner.subtitle,
+                    style: AppTextStyles.body.copyWith(
+                      color: AppColors.textSecondary,
+                      fontFamily: 'Jua',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (banner.icon != null)
+              Container(
+                width: 72,
+                height: 72,
+                decoration: const BoxDecoration(
+                  color: AppColors.backgroundElevated,
+                  shape: BoxShape.circle,
                 ),
-              ],
-            ),
-          ),
-          if (banner.icon != null)
-            Container(
-              width: 72,
-              height: 72,
-              decoration: const BoxDecoration(
-                color: AppColors.backgroundElevated,
-                shape: BoxShape.circle,
+                child: Icon(
+                  banner.icon,
+                  size: 36,
+                  color: AppColors.primary,
+                ),
               ),
-              child: Icon(
-                banner.icon,
-                size: 36,
-                color: AppColors.primary,
-              ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
+  }
+
+  void _onBannerTap(_BannerData banner) {
+    if (banner.url != null) {
+      _launchUrl(banner.url!);
+    } else if (banner.routeName != null) {
+      Navigator.of(context).pushNamed(banner.routeName!);
+    }
+  }
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      debugPrint('Could not launch $url');
+    }
   }
 
   Widget _buildPageIndicator(int count, int currentIndex) {
@@ -510,6 +531,8 @@ class _BannerData {
   final String? image;
   final List<Color>? gradientColors;
   final IconData? icon;
+  final String? url;
+  final String? routeName;
 
   const _BannerData({
     required this.title,
@@ -517,6 +540,8 @@ class _BannerData {
     this.image,
     this.gradientColors,
     this.icon,
+    this.url,
+    this.routeName,
   });
 }
 
