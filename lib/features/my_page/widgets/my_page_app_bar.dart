@@ -30,9 +30,7 @@ class MyPageAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         IconButton(
           icon: const Icon(Icons.settings, color: LqColors.textDark),
-          onPressed: () {
-            // TODO: settings page
-          },
+          onPressed: () => Navigator.of(context).pushNamed('/account-verification'),
         ),
       ],
     );

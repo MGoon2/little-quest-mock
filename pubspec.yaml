@@ -64,6 +64,8 @@ flutter:
     - assets/images/login_bg.png
     - assets/images/home_banner.png
     - assets/images/my_page_bg.png
+    - assets/images/account_verification/explorer_verification_header.png
+    - assets/images/account_verification/little-quest-security-banner-bg.png
 
   fonts:
     - family: Pretendard
