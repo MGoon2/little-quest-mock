@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../models/plan_tier.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
 
 /// 구독 플랜 카드.
 class PlanCard extends StatelessWidget {
@@ -78,10 +78,7 @@ class PlanCard extends StatelessWidget {
                             color: AppColors.primary,
                             borderRadius: BorderRadius.circular(AppRadius.xs),
                           ),
-                          child: Text(
-                            '추천',
-                            style: AppTextStyles.label,
-                          ),
+                          child: Text('추천', style: AppTextStyles.label),
                         ),
                     ],
                   ),
@@ -107,10 +104,7 @@ class PlanCard extends StatelessWidget {
                                 color: AppColors.primary,
                               ),
                               const SizedBox(width: 4),
-                              Text(
-                                feature,
-                                style: AppTextStyles.caption,
-                              ),
+                              Text(feature, style: AppTextStyles.caption),
                             ],
                           ),
                         )

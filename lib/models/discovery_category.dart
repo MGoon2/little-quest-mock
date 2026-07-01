@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
 
 /// 발견 카드의 카테고리.
-enum DiscoveryCategory {
-  all,
-  plant,
-  animal,
-  insect,
-  building,
-}
+enum DiscoveryCategory { all, plant, animal, insect, building }
 
 extension DiscoveryCategoryX on DiscoveryCategory {
   String get label {

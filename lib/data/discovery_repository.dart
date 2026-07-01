@@ -17,7 +17,9 @@ class DiscoveryRepository implements DiscoveryDataSource {
   const DiscoveryRepository();
 
   @override
-  Future<List<DiscoveryCard>> fetchByCategory(DiscoveryCategory category) async {
+  Future<List<DiscoveryCard>> fetchByCategory(
+    DiscoveryCategory category,
+  ) async {
     // TODO: API 연결 시 제거
     if (category == DiscoveryCategory.all) {
       return DiscoveryFixtures.all;

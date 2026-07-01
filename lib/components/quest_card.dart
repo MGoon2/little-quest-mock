@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../models/quest.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
 
 /// 오늘의 퀘스트 카드.
 class QuestCard extends StatelessWidget {
@@ -53,10 +53,7 @@ class QuestCard extends StatelessWidget {
                     color: AppColors.primarySoft,
                     borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
-                  child: const Icon(
-                    Icons.search,
-                    color: AppColors.primary,
-                  ),
+                  child: const Icon(Icons.search, color: AppColors.primary),
                 ),
               ],
             ),

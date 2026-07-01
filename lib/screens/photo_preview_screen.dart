@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../components/primary_button.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
 import 'analysis_status_screen.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
+import 'package:little_quest/core/widgets/primary_button.dart';
 
 /// 촬영한 사진 미리보기 화면.
 ///
@@ -51,10 +51,7 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen>
         fit: StackFit.expand,
         children: [
           // 촬영된 사진 (플레이스홀더)
-          FadeTransition(
-            opacity: _fadeAnimation,
-            child: _buildCapturedPhoto(),
-          ),
+          FadeTransition(opacity: _fadeAnimation, child: _buildCapturedPhoto()),
           // 상단 닫기
           _buildTopBar(context),
           // 하단 확인 영역
@@ -70,10 +67,7 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen>
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [
-            Color(0xFF8FB573),
-            Color(0xFF5A8F4E),
-          ],
+          colors: [Color(0xFF8FB573), Color(0xFF5A8F4E)],
         ),
       ),
       child: Stack(
@@ -108,11 +102,7 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen>
           Center(
             child: Opacity(
               opacity: 0.15,
-              child: Icon(
-                Icons.eco,
-                size: 280,
-                color: Colors.white,
-              ),
+              child: Icon(Icons.eco, size: 280, color: Colors.white),
             ),
           ),
         ],
@@ -144,11 +134,7 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen>
                     color: Colors.black.withValues(alpha: 0.4),
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(
-                    Icons.close,
-                    color: Colors.white,
-                    size: 22,
-                  ),
+                  child: const Icon(Icons.close, color: Colors.white, size: 22),
                 ),
               ),
               Container(
@@ -205,10 +191,7 @@ class _PhotoPreviewScreenState extends State<PhotoPreviewScreen>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  '이 사진을 도감 카드로 만들까요?',
-                  style: AppTextStyles.titleSmall,
-                ),
+                Text('이 사진을 도감 카드로 만들까요?', style: AppTextStyles.titleSmall),
                 const SizedBox(height: AppSpacing.sm),
                 Text(
                   'AI가 사진 속 대상을 분석해\n도감 카드의 앞면과 뒷면을 만들어줘요.',

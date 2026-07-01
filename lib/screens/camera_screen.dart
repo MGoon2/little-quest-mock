@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
 import 'photo_preview_screen.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
 
 /// 카메라 촬영 화면.
 ///
@@ -78,11 +78,7 @@ class _CameraScreenState extends State<CameraScreen> {
             alignment: Alignment.centerLeft,
             child: GestureDetector(
               onTap: () => Navigator.of(context).pop(),
-              child: const Icon(
-                Icons.close,
-                color: Colors.white,
-                size: 28,
-              ),
+              child: const Icon(Icons.close, color: Colors.white, size: 28),
             ),
           ),
         ),
@@ -98,37 +94,24 @@ class _CameraScreenState extends State<CameraScreen> {
         child: Stack(
           children: [
             // 좌상단
-            Positioned(
-              top: 0,
-              left: 0,
-              child: _corner(),
-            ),
+            Positioned(top: 0, left: 0, child: _corner()),
             // 우상단
             Positioned(
               top: 0,
               right: 0,
-              child: Transform.rotate(
-                angle: 1.5708,
-                child: _corner(),
-              ),
+              child: Transform.rotate(angle: 1.5708, child: _corner()),
             ),
             // 좌하단
             Positioned(
               bottom: 0,
               left: 0,
-              child: Transform.rotate(
-                angle: -1.5708,
-                child: _corner(),
-              ),
+              child: Transform.rotate(angle: -1.5708, child: _corner()),
             ),
             // 우하단
             Positioned(
               bottom: 0,
               right: 0,
-              child: Transform.rotate(
-                angle: 3.14159,
-                child: _corner(),
-              ),
+              child: Transform.rotate(angle: 3.14159, child: _corner()),
             ),
           ],
         ),
@@ -145,9 +128,7 @@ class _CameraScreenState extends State<CameraScreen> {
           top: BorderSide(color: Colors.white, width: 3),
           left: BorderSide(color: Colors.white, width: 3),
         ),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16),
-        ),
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(16)),
       ),
     );
   }
@@ -163,47 +144,43 @@ class _CameraScreenState extends State<CameraScreen> {
           borderRadius: BorderRadius.circular(AppRadius.lg),
         ),
         child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: _categories.asMap().entries.map((entry) {
-              final index = entry.key;
-              final category = entry.value;
-              final isSelected = _selectedCategory == category;
-              return GestureDetector(
-                onTap: () => setState(() => _selectedCategory = category),
-                child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 6),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? AppColors.primary.withValues(alpha: 0.9)
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(AppRadius.md),
-                  ),
-                  child: Column(
-                    children: [
-                      Icon(
-                        _categoryIcons[index],
-                        size: 20,
+          mainAxisSize: MainAxisSize.min,
+          children: _categories.asMap().entries.map((entry) {
+            final index = entry.key;
+            final category = entry.value;
+            final isSelected = _selectedCategory == category;
+            return GestureDetector(
+              onTap: () => setState(() => _selectedCategory = category),
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: isSelected
+                      ? AppColors.primary.withValues(alpha: 0.9)
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(AppRadius.md),
+                ),
+                child: Column(
+                  children: [
+                    Icon(_categoryIcons[index], size: 20, color: Colors.white),
+                    const SizedBox(height: 4),
+                    Text(
+                      category,
+                      style: AppTextStyles.caption.copyWith(
                         color: Colors.white,
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        category,
-                        style: AppTextStyles.caption.copyWith(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              );
-            }).toList(),
-          ),
+              ),
+            );
+          }).toList(),
         ),
-      );
+      ),
+    );
   }
 
   Widget _buildBottomControls() {
@@ -294,9 +271,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Widget _buildCaptureControls() {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.screenPadding,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenPadding),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -350,11 +325,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     color: AppColors.primary,
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(
-                    Icons.eco,
-                    size: 36,
-                    color: Colors.white,
-                  ),
+                  child: const Icon(Icons.eco, size: 36, color: Colors.white),
                 ),
               ),
             ),
@@ -374,11 +345,9 @@ class _CameraScreenState extends State<CameraScreen> {
     // 잠시 대기 후 미리보기 스크린으로 이동
     Future.delayed(const Duration(milliseconds: 300), () {
       if (!context.mounted) return;
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (_) => const PhotoPreviewScreen(),
-        ),
-      );
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (_) => const PhotoPreviewScreen()));
     });
   }
 }
@@ -393,10 +362,7 @@ class _CameraPreviewPlaceholder extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [
-            Color(0xFF8FB573),
-            Color(0xFF5A8F4E),
-          ],
+          colors: [Color(0xFF8FB573), Color(0xFF5A8F4E)],
         ),
       ),
       child: Stack(
@@ -443,11 +409,7 @@ class _CameraPreviewPlaceholder extends StatelessWidget {
           Center(
             child: Opacity(
               opacity: 0.12,
-              child: Icon(
-                Icons.eco,
-                size: 280,
-                color: Colors.white,
-              ),
+              child: Icon(Icons.eco, size: 280, color: Colors.white),
             ),
           ),
         ],

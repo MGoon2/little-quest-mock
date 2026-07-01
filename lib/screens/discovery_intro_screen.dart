@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../components/primary_button.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
 import 'camera_screen.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
+import 'package:little_quest/core/widgets/primary_button.dart';
 
 /// 발견 카드 소개 화면.
 ///
@@ -45,10 +45,7 @@ class DiscoveryIntroScreen extends StatelessWidget {
                         color: AppColors.primary,
                       ),
                     ),
-                    TextSpan(
-                      text: '가 돼요',
-                      style: AppTextStyles.titleLarge,
-                    ),
+                    TextSpan(text: '가 돼요', style: AppTextStyles.titleLarge),
                   ],
                 ),
               ),
@@ -69,9 +66,7 @@ class DiscoveryIntroScreen extends StatelessWidget {
                 icon: const Icon(Icons.camera_alt, size: 20),
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => const CameraScreen(),
-                    ),
+                    MaterialPageRoute(builder: (_) => const CameraScreen()),
                   );
                 },
               ),
@@ -149,17 +144,11 @@ class DiscoveryIntroScreen extends StatelessWidget {
               children: [
                 Text('특징', style: AppTextStyles.heading),
                 const SizedBox(height: AppSpacing.sm),
-                Text(
-                  '부채꼴 모양의 잎을 가진 대표적인 활엽 교목이에요.',
-                  style: AppTextStyles.body,
-                ),
+                Text('부채꼴 모양의 잎을 가진 대표적인 활엽 교목이에요.', style: AppTextStyles.body),
                 const SizedBox(height: AppSpacing.lg),
                 Text('서식지', style: AppTextStyles.heading),
                 const SizedBox(height: AppSpacing.sm),
-                Text(
-                  '도시 가로수나 공원에서 흔히 볼 수 있어요.',
-                  style: AppTextStyles.body,
-                ),
+                Text('도시 가로수나 공원에서 흔히 볼 수 있어요.', style: AppTextStyles.body),
               ],
             ),
           ),
@@ -180,9 +169,7 @@ class DiscoveryIntroScreen extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: AppTextStyles.captionMedium.copyWith(
-          color: AppColors.primary,
-        ),
+        style: AppTextStyles.captionMedium.copyWith(color: AppColors.primary),
       ),
     );
   }
@@ -221,10 +208,7 @@ class DiscoveryIntroScreen extends StatelessWidget {
                         color: AppColors.primarySoft,
                         borderRadius: BorderRadius.circular(AppRadius.full),
                       ),
-                      child: Icon(
-                        feature.icon,
-                        color: AppColors.primary,
-                      ),
+                      child: Icon(feature.icon, color: AppColors.primary),
                     ),
                     const SizedBox(height: AppSpacing.md),
                     Text(

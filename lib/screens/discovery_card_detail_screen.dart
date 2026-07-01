@@ -7,9 +7,9 @@ import '../features/card_detail/widgets/discovery_hero_card.dart';
 import '../features/card_detail/widgets/discovery_record_card.dart';
 import '../features/card_detail/widgets/holo_progress_card.dart';
 import '../features/card_detail/widgets/observation_history_card.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
 
 /// 카드 상세 페이지.
 ///

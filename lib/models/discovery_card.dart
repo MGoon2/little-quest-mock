@@ -24,8 +24,5 @@ class DiscoveryCardGroup {
   final DiscoveryCategory category;
   final List<DiscoveryCard> cards;
 
-  const DiscoveryCardGroup({
-    required this.category,
-    required this.cards,
-  });
+  const DiscoveryCardGroup({required this.category, required this.cards});
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../components/primary_button.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
+import 'package:little_quest/core/widgets/primary_button.dart';
 
 /// 탐험 지도 화면.
 class MapScreen extends StatelessWidget {
@@ -82,10 +82,7 @@ class MapScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              '서울숲 가족마당',
-                              style: AppTextStyles.heading,
-                            ),
+                            Text('서울숲 가족마당', style: AppTextStyles.heading),
                             Text(
                               '12종류 발견 · 2024.05.20',
                               style: AppTextStyles.caption,
@@ -96,10 +93,7 @@ class MapScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: AppSpacing.lg),
-                  PrimaryButton(
-                    label: '이 위치에서 퀘스트 시작',
-                    onPressed: () {},
-                  ),
+                  PrimaryButton(label: '이 위치에서 퀘스트 시작', onPressed: () {}),
                 ],
               ),
             ),
