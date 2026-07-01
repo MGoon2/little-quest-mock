@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../models/discovery_card_item.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
 
 /// 도감 카드 상세 화면.
 class CardDetailScreen extends StatelessWidget {
@@ -30,11 +30,7 @@ class CardDetailScreen extends StatelessWidget {
               background: Container(
                 color: item.backgroundColor,
                 child: Center(
-                  child: Icon(
-                    item.icon,
-                    size: 120,
-                    color: AppColors.primary,
-                  ),
+                  child: Icon(item.icon, size: 120, color: AppColors.primary),
                 ),
               ),
             ),
@@ -101,9 +97,7 @@ class CardDetailScreen extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: AppTextStyles.captionMedium.copyWith(
-          color: AppColors.primary,
-        ),
+        style: AppTextStyles.captionMedium.copyWith(color: AppColors.primary),
       ),
     );
   }
@@ -124,9 +118,7 @@ class CardDetailScreen extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Text(
             content,
-            style: AppTextStyles.body.copyWith(
-              color: AppColors.textSecondary,
-            ),
+            style: AppTextStyles.body.copyWith(color: AppColors.textSecondary),
           ),
         ],
       ),

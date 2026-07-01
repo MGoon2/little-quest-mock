@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../../../../theme/app_colors.dart';
-import '../../../../theme/app_radius.dart';
-import '../../../../theme/app_spacing.dart';
-import '../../../../theme/app_text_styles.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
 
 /// Holo 등급 배지.
 class HoloBadge extends StatelessWidget {

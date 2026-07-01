@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../../../../theme/app_colors.dart';
-import '../../../../theme/app_radius.dart';
-import '../../../../theme/app_shadows.dart';
-import '../../../../theme/app_spacing.dart';
-import '../../../../theme/app_text_styles.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
 
 /// 하단 고정 액션 바.
 class CardDetailBottomActionBar extends StatelessWidget {

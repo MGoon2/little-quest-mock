@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../components/plan_card.dart';
 import '../models/plan_tier.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
 
 /// 구독 플랜 안내 화면.
 class PlanScreen extends StatefulWidget {
@@ -21,48 +21,43 @@ class _PlanScreenState extends State<PlanScreen> {
   PlanTier _selectedTier = PlanTier.plus;
 
   List<Plan> get _plans => [
-        const Plan(
-          tier: PlanTier.free,
-          title: 'Free',
-          price: '무료',
-          period: '평생',
-          features: [
-            '월 20장 카드 생성',
-            '기본 카드 저장',
-            '대표 지도 한번 사용',
-            '커뮤니티',
-          ],
-          isPopular: false,
-        ),
-        Plan(
-          tier: PlanTier.plus,
-          title: 'Plus',
-          price: _isYearly ? '월 5,900원' : '월 6,900원',
-          period: _isYearly ? '연간 결제' : '월간 결제',
-          features: [
-            '월 100장 카드 생성',
-            '지도 기록 슬롯 20개',
-            'Holo 카드 표시',
-            'PDF 다운로드 월 3회',
-            '디지털 백업드 확장',
-          ],
-          isPopular: true,
-        ),
-        Plan(
-          tier: PlanTier.family,
-          title: 'Family',
-          price: _isYearly ? '월 11,900원' : '월 12,900원',
-          period: _isYearly ? '연간 결제' : '월간 결제',
-          features: [
-            '월 300장 카드 생성',
-            '자녀 프로필 최대 3명',
-            '지도 기록 슬롯 100개',
-            'PDF 다운로드 월 10회',
-            '가족 발견 지도',
-          ],
-          isPopular: false,
-        ),
-      ];
+    const Plan(
+      tier: PlanTier.free,
+      title: 'Free',
+      price: '무료',
+      period: '평생',
+      features: ['월 20장 카드 생성', '기본 카드 저장', '대표 지도 한번 사용', '커뮤니티'],
+      isPopular: false,
+    ),
+    Plan(
+      tier: PlanTier.plus,
+      title: 'Plus',
+      price: _isYearly ? '월 5,900원' : '월 6,900원',
+      period: _isYearly ? '연간 결제' : '월간 결제',
+      features: [
+        '월 100장 카드 생성',
+        '지도 기록 슬롯 20개',
+        'Holo 카드 표시',
+        'PDF 다운로드 월 3회',
+        '디지털 백업드 확장',
+      ],
+      isPopular: true,
+    ),
+    Plan(
+      tier: PlanTier.family,
+      title: 'Family',
+      price: _isYearly ? '월 11,900원' : '월 12,900원',
+      period: _isYearly ? '연간 결제' : '월간 결제',
+      features: [
+        '월 300장 카드 생성',
+        '자녀 프로필 최대 3명',
+        '지도 기록 슬롯 100개',
+        'PDF 다운로드 월 10회',
+        '가족 발견 지도',
+      ],
+      isPopular: false,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -192,16 +187,15 @@ class _PeriodButton extends StatelessWidget {
             Text(
               label,
               style: AppTextStyles.bodyMedium.copyWith(
-                color: isSelected ? AppColors.textPrimary : AppColors.textSecondary,
+                color: isSelected
+                    ? AppColors.textPrimary
+                    : AppColors.textSecondary,
               ),
             ),
             if (badge != null) ...[
               const SizedBox(width: 6),
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 6,
-                  vertical: 2,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
                   color: AppColors.accentCoralLight,
                   borderRadius: BorderRadius.circular(AppRadius.xs),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../components/primary_button.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
 import 'camera_screen.dart';
 import 'discovery_card_screen.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
+import 'package:little_quest/core/widgets/primary_button.dart';
 
 /// AI 분석 상태 화면.
 class AnalysisStatusScreen extends StatefulWidget {
@@ -66,10 +66,7 @@ class _AnalysisStatusScreenState extends State<AnalysisStatusScreen>
               const Spacer(),
               _buildAnimatedIcon(),
               const SizedBox(height: AppSpacing.xxl),
-              Text(
-                'AI가 열심히 분석 중이에요',
-                style: AppTextStyles.titleSmall,
-              ),
+              Text('AI가 열심히 분석 중이에요', style: AppTextStyles.titleSmall),
               const SizedBox(height: AppSpacing.md),
               Text(
                 _steps[_step],

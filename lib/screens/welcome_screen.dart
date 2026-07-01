@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../components/primary_button.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_spacing.dart';
 import 'home_screen.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/core/widgets/primary_button.dart';
 
 /// 앱 진입 시 보여지는 웰컴 화면.
 ///
@@ -55,9 +55,9 @@ class WelcomeScreen extends StatelessWidget {
   }
 
   void _navigateToHome(BuildContext context) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const HomeScreen()),
-    );
+    Navigator.of(
+      context,
+    ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeScreen()));
   }
 
   void _navigateToLogin(BuildContext context) {

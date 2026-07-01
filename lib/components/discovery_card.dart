@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../models/discovery_card_item.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
 
 /// 나의 발견 카드.
 class DiscoveryCard extends StatelessWidget {
@@ -64,9 +64,7 @@ class DiscoveryCard extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             Text(
               item.name,
-              style: AppTextStyles.bodyMedium.copyWith(
-                fontFamily: 'Jua',
-              ),
+              style: AppTextStyles.bodyMedium.copyWith(fontFamily: 'Jua'),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),

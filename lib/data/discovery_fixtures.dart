@@ -46,18 +46,18 @@ abstract final class DiscoveryFixtures {
   ];
 
   static List<DiscoveryCard> get all => [
-        ...plants,
-        ...animals,
-        ...insects,
-        ...buildings,
-      ];
+    ...plants,
+    ...animals,
+    ...insects,
+    ...buildings,
+  ];
 
   static List<DiscoveryCardGroup> get groups => [
-        DiscoveryCardGroup(category: DiscoveryCategory.plant, cards: plants),
-        DiscoveryCardGroup(category: DiscoveryCategory.animal, cards: animals),
-        DiscoveryCardGroup(category: DiscoveryCategory.insect, cards: insects),
-        DiscoveryCardGroup(category: DiscoveryCategory.building, cards: buildings),
-      ];
+    DiscoveryCardGroup(category: DiscoveryCategory.plant, cards: plants),
+    DiscoveryCardGroup(category: DiscoveryCategory.animal, cards: animals),
+    DiscoveryCardGroup(category: DiscoveryCategory.insect, cards: insects),
+    DiscoveryCardGroup(category: DiscoveryCategory.building, cards: buildings),
+  ];
 
   static DiscoveryCard _card(
     String id,

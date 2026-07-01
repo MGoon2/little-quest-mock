@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../components/app_scaffold.dart';
 import '../components/discovery_card.dart';
 import '../components/quest_card.dart';
-import '../components/section_header.dart';
-import '../components/side_menu.dart';
 import '../models/discovery_card_item.dart';
 import '../models/quest.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
 import 'camera_screen.dart';
 import 'discovery_card_screen.dart';
-import 'quest_detail_screen.dart';
+import 'package:little_quest/features/quest_detail/presentation/pages/quest_detail_screen.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
+import 'package:little_quest/core/widgets/app_scaffold.dart';
+import 'package:little_quest/core/widgets/section_header.dart';
+import 'package:little_quest/core/widgets/side_menu.dart';
 
 /// 메인 홈 화면.
 class HomeScreen extends StatefulWidget {
@@ -158,10 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
       onNavigationTap: _onNavTap,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
-          'Little Quest',
-          style: AppTextStyles.logo,
-        ),
+        title: Text('Little Quest', style: AppTextStyles.logo),
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () => _openSideMenu(context),
@@ -216,7 +213,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 separatorBuilder: (_, index) => const SizedBox(width: 12),
                 itemBuilder: (_, index) => DiscoveryCard(
                   item: _discoveries[index],
-                  onTap: () => _openDiscoveryDetail(context, _discoveries[index]),
+                  onTap: () =>
+                      _openDiscoveryDetail(context, _discoveries[index]),
                 ),
               ),
             ),
@@ -295,10 +293,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    banner.title,
-                    style: AppTextStyles.titleSmall,
-                  ),
+                  Text(banner.title, style: AppTextStyles.titleSmall),
                   const SizedBox(height: AppSpacing.sm),
                   Text(
                     banner.subtitle,
@@ -318,11 +313,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: AppColors.backgroundElevated,
                   shape: BoxShape.circle,
                 ),
-                child: Icon(
-                  banner.icon,
-                  size: 36,
-                  color: AppColors.primary,
-                ),
+                child: Icon(banner.icon, size: 36, color: AppColors.primary),
               ),
           ],
         ),
@@ -411,10 +402,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: AppColors.primarySoft,
               borderRadius: BorderRadius.circular(AppRadius.md),
             ),
-            child: const Icon(
-              Icons.location_on,
-              color: AppColors.primary,
-            ),
+            child: const Icon(Icons.location_on, color: AppColors.primary),
           ),
           const SizedBox(width: AppSpacing.lg),
           Expanded(
@@ -424,9 +412,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   log.title,
-                  style: AppTextStyles.bodyMedium.copyWith(
-                    fontFamily: 'Jua',
-                  ),
+                  style: AppTextStyles.bodyMedium.copyWith(fontFamily: 'Jua'),
                 ),
                 const SizedBox(height: 4),
                 Text(
@@ -436,10 +422,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          const Icon(
-            Icons.chevron_right,
-            color: AppColors.textTertiary,
-          ),
+          const Icon(Icons.chevron_right, color: AppColors.textTertiary),
         ],
       ),
     );
@@ -511,28 +494,25 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _openCamera(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const CameraScreen()),
-    );
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => const CameraScreen()));
   }
 
   void _openDiscoveryCards(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const DiscoveryCardScreen()),
-    );
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => const DiscoveryCardScreen()));
   }
 
   void _openQuestDetail(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const QuestDetailScreen()),
-    );
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => const QuestDetailScreen()));
   }
 
   void _openDiscoveryDetail(BuildContext context, DiscoveryCardItem item) {
-    Navigator.of(context).pushNamed(
-      '/card-detail',
-      arguments: item,
-    );
+    Navigator.of(context).pushNamed('/card-detail', arguments: item);
   }
 }
 

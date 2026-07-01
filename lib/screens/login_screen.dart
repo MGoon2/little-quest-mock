@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../components/primary_button.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
 import 'home_screen.dart';
+import 'package:little_quest/app/theme/app_colors.dart';
+import 'package:little_quest/app/theme/app_radius.dart';
+import 'package:little_quest/app/theme/app_shadows.dart';
+import 'package:little_quest/app/theme/app_spacing.dart';
+import 'package:little_quest/app/theme/app_text_styles.dart';
+import 'package:little_quest/core/widgets/primary_button.dart';
 
 /// 로그인 화면.
 ///
@@ -162,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(height: AppSpacing.lg),
           Center(
             child: GestureDetector(
-              onTap: () {},
+              onTap: () => Navigator.of(context).pushNamed('/signup'),
               child: RichText(
                 text: TextSpan(
                   text: '아직 계정이 없으신가요? ',
@@ -215,9 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
               borderRadius: BorderRadius.circular(AppRadius.md),
               borderSide: BorderSide.none,
             ),
-            contentPadding: const EdgeInsets.symmetric(
-              vertical: AppSpacing.lg,
-            ),
+            contentPadding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
           ),
         ),
       ],
@@ -227,12 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildDivider() {
     return Row(
       children: [
-        Expanded(
-          child: Container(
-            height: 1,
-            color: AppColors.divider,
-          ),
-        ),
+        Expanded(child: Container(height: 1, color: AppColors.divider)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
           child: Text(
@@ -242,12 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ),
-        Expanded(
-          child: Container(
-            height: 1,
-            color: AppColors.divider,
-          ),
-        ),
+        Expanded(child: Container(height: 1, color: AppColors.divider)),
       ],
     );
   }
@@ -256,19 +244,12 @@ class _LoginScreenState extends State<LoginScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
+        _SocialButton(icon: _naverIcon(), onTap: () {}),
         _SocialButton(
-          icon: _naverIcon(),
+          icon: const Icon(Icons.apple, color: AppColors.textPrimary, size: 28),
           onTap: () {},
         ),
-        _SocialButton(
-          icon: const Icon(Icons.apple,
-              color: AppColors.textPrimary, size: 28),
-          onTap: () {},
-        ),
-        _SocialButton(
-          icon: _googleIcon(),
-          onTap: () {},
-        ),
+        _SocialButton(icon: _googleIcon(), onTap: () {}),
       ],
     );
   }
@@ -318,10 +299,7 @@ class _SocialButton extends StatelessWidget {
   final Widget icon;
   final VoidCallback onTap;
 
-  const _SocialButton({
-    required this.icon,
-    required this.onTap,
-  });
+  const _SocialButton({required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
