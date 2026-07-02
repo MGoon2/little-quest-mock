@@ -4,7 +4,6 @@ import 'package:little_quest/features/profile_edit/data/datasources/profile_edit
 import 'package:little_quest/features/profile_edit/data/models/profile_edit_data.dart';
 import 'package:little_quest/features/profile_edit/presentation/widgets/basic_info_section_card.dart';
 import 'package:little_quest/features/profile_edit/presentation/widgets/connected_accounts_section_card.dart';
-import 'package:little_quest/features/profile_edit/presentation/widgets/delete_account_button.dart';
 import 'package:little_quest/features/profile_edit/presentation/widgets/email_section_card.dart';
 import 'package:little_quest/features/profile_edit/presentation/widgets/notification_settings_section_card.dart';
 import 'package:little_quest/features/profile_edit/presentation/widgets/password_section_card.dart';
@@ -47,12 +46,6 @@ class ProfileEditScreen extends StatelessWidget {
               ProfileSaveButton(
                 onPressed: () {
                   // TODO: validate form and call update profile API
-                },
-              ),
-              const SizedBox(height: 16),
-              DeleteAccountButton(
-                onPressed: () {
-                  // TODO: show delete account confirmation dialog
                 },
               ),
             ],

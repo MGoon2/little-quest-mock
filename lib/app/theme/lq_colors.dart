@@ -17,4 +17,7 @@ abstract final class LqColors {
   static const border = Color(0xFFE7DEC8);
   static const inputBorder = Color(0xFFE2DED3);
   static const disabled = Color(0xFFD8D8D0);
+  static const warning = Color(0xFFFFF4D8);
+  static const danger = Color(0xFFD9534F);
+  static const dangerSoft = Color(0xFFFFECE8);
 }

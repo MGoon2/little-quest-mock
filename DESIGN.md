@@ -24,6 +24,9 @@ Little Quest feels like a warm field guide for children and parents: safe, gentl
 | Border/default | `LqColors.border` | `#E7DEC8` | n/a | Cards and soft dividers |
 | Border/input | `LqColors.inputBorder` | `#E2DED3` | n/a | Input and selector outlines |
 | State/disabled | `LqColors.disabled` | `#D8D8D0` | n/a | Inactive steps and disabled controls |
+| State/warning | `LqColors.warning` | `#FFF4D8` | n/a | Parent-mode deletion and privacy caution surfaces |
+| State/danger | `LqColors.danger` | `#D9534F` | n/a | Destructive parent-mode actions and account deletion |
+| State/danger-soft | `LqColors.dangerSoft` | `#FFECE8` | n/a | Destructive badges and low-emphasis danger backgrounds |
 
 ### Rules
 
@@ -110,6 +113,35 @@ All spacing derives from a 4px base.
 - **Spacing**: 18-20px padding.
 - **States**: static informational surface.
 - **Accessibility**: copy is readable as text, decoration excluded from interaction.
+
+### Parent Mode Management Card
+
+- **Structure**: card-cream surface, 18-24px radius, beige border, optional leading icon/avatar, title, supporting copy, and chevron or CTA.
+- **Variants**: section card, list row group, dashboard menu tile, warning surface, danger action.
+- **Spacing**: 20px screen padding, 16-20px card padding, 12px row gaps.
+- **States**: default, pressed, selected tab, disabled CTA, destructive confirmation.
+- **Accessibility**: destructive actions include explicit text and confirmation dialogs; icon-only buttons require semantic labels.
+
+### Parent Mode Page Header
+
+- **Structure**: centered deep-green title with short explanatory copy below.
+- **Usage**: parent-mode detail and management pages where the app bar only carries navigation/actions.
+- **Spacing**: 24-28px gap before the first card.
+- **Accessibility**: title remains text, not decorative imagery; copy uses Korean-friendly wrapping at mobile widths.
+
+### Parent Mode Image Placeholder
+
+- **Structure**: soft-green circle or rounded rectangle with an image icon and short label.
+- **Usage**: profile, child image, provider, map, or illustration slots when no real asset exists.
+- **Constraint**: do not recreate characters, faces, plants, maps, or mock illustrations with `CustomPaint` or stacked icons.
+- **Accessibility**: label describes the missing image role, such as `프로필 이미지` or `아이 이미지`.
+
+### Parent Mode Bottom Navigation
+
+- **Structure**: in-feature rounded navigation bar with three labels: 아이 모드, 부모 모드, 설정.
+- **Usage**: only inside parent-mode screens so the child-mode app shell remains unchanged.
+- **States**: selected parent tab uses `LqColors.primaryGreen`; inactive tabs use `LqColors.textSubtle`.
+- **Accessibility**: each tab has a text label and at least 48px tap target.
 
 ## 6. Motion & Interaction
 

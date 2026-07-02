@@ -8,11 +8,20 @@ class LittleQuestApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const routeOverride = String.fromEnvironment('LQ_INITIAL_ROUTE');
+    final defaultRouteName =
+        WidgetsBinding.instance.platformDispatcher.defaultRouteName;
+    final initialRoute = routeOverride.isNotEmpty
+        ? routeOverride
+        : defaultRouteName == Navigator.defaultRouteName
+        ? AppRouter.initialRoute
+        : defaultRouteName;
+
     return MaterialApp(
       title: 'Little Quest',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
-      initialRoute: AppRouter.initialRoute,
+      initialRoute: initialRoute,
       routes: AppRouter.routes,
       onGenerateRoute: AppRouter.onGenerateRoute,
     );

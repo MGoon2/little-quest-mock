@@ -7,6 +7,7 @@ import 'package:little_quest/features/my_page/presentation/widgets/explorer_head
 import 'package:little_quest/features/my_page/presentation/widgets/my_badges_section.dart';
 import 'package:little_quest/features/my_page/presentation/widgets/my_page_app_bar.dart';
 import 'package:little_quest/features/my_page/presentation/widgets/my_page_bottom_cta_card.dart';
+import 'package:little_quest/features/my_page/presentation/widgets/my_page_parent_mode_card.dart';
 import 'package:little_quest/features/my_page/presentation/widgets/profile_level_summary_card.dart';
 import 'package:little_quest/features/my_page/presentation/widgets/recent_observation_section.dart';
 import 'package:little_quest/features/my_page/presentation/widgets/weekly_exploration_summary_card.dart';
@@ -73,6 +74,10 @@ class MyPageScreen extends StatelessWidget {
                 onTap: () {
                   // TODO: camera or exploration page
                 },
+              ),
+              const SizedBox(height: 18),
+              MyPageParentModeCard(
+                onTap: () => Navigator.of(context).pushNamed('/parent/entry'),
               ),
               const SizedBox(height: 24),
             ],

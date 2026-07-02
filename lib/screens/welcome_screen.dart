@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'home_screen.dart';
 import 'package:little_quest/app/theme/app_colors.dart';
 import 'package:little_quest/app/theme/app_spacing.dart';
 import 'package:little_quest/core/widgets/primary_button.dart';
@@ -36,7 +35,7 @@ class WelcomeScreen extends StatelessWidget {
                   const Spacer(),
                   PrimaryButton(
                     label: '퀘스트 시작하기',
-                    onPressed: () => _navigateToHome(context),
+                    onPressed: () => _navigateToModeSelection(context),
                   ),
                   const SizedBox(height: AppSpacing.lg),
                   PrimaryButton(
@@ -54,10 +53,8 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 
-  void _navigateToHome(BuildContext context) {
-    Navigator.of(
-      context,
-    ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeScreen()));
+  void _navigateToModeSelection(BuildContext context) {
+    Navigator.of(context).pushNamed('/mode-selection');
   }
 
   void _navigateToLogin(BuildContext context) {
